@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# VIX Visualizer Dashboard - Updated for GitHub Actions testing
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objs as go
@@ -457,7 +459,7 @@ def create_html_dashboard(data, latest, vix_trend, vvix_trend, skew_trend, overa
             
             <!-- Chart -->
             <div class="chart-container">
-                <h4 class="mb-3">�� Volatility Indices - Trendanalys med Riskindikatorer</h4>
+                <h4 class="mb-3"> Volatility Indices - Trendanalys med Riskindikatorer</h4>
                                  <div class="info-box">
                      <strong>📊 Grafstruktur:</strong> En enda Y-axel för alla index (VIX lågt, VVIX/SKEW högt)<br>
                      <strong>Gula områden:</strong> Endast vid måttlig eller stark varningssignal<br>
