@@ -36,29 +36,7 @@ jobs:
         python -m PyInstaller --onefile --windowed --name "VIXVisualizer" main.py
         
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: vix-visualizer-exe
         path: dist/VIXVisualizer.exe
-        
-    - name: Create Release
-      if: github.event_name == 'release'
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: |
-          ## VIX Visualizer Release
-          
-          ### Changes
-          - Automated build from GitHub Actions
-          - Windows executable included
-          
-          ### Installation
-          1. Download VIXVisualizer.exe
-          2. Right-click and "Run as administrator"
-          3. Follow Windows SmartScreen instructions if needed
-        draft: false
-        prerelease: false
