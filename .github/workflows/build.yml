@@ -19,7 +19,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
+        python-version: '3.10'
+        
+    - name: Debug - Show Python version
+      run: |
+        python --version
+        python -c "import sys; print('Python executable:', sys.executable)"
         
     - name: Install dependencies
       run: |
@@ -27,13 +32,26 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
         
+    - name: Debug - Show installed packages
+      run: |
+        pip list
+        
     - name: Test program
       run: |
         python test_program.py
         
+    - name: Debug - Show current directory
+      run: |
+        pwd
+        ls -la
+        
     - name: Build executable
       run: |
         python -m PyInstaller --onefile --windowed --name "VIXVisualizer" main.py
+        
+    - name: Debug - Show build results
+      run: |
+        ls -la dist/
         
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
